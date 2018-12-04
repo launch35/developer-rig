@@ -200,9 +200,9 @@ export async function saveProduct(clientId: string, token: string, product: Prod
 }
 
 export async function fetchNewRelease() {
-  const url = 'https://extensions-devrig-proxy.twitch.tv/repos/twitchdev/developer-rig/releases/latest';
+  const url = 'https://api.github.com/repos/twitchdev/developer-rig/releases/latest';
   const response = await onlineApi.get<any>(url, {
-    Accept: 'application/json',
+    Accept: 'application/vnd.github.v3+json',
   });
   const tagName = response.tag_name;
   const zipUrl = response.assets[0].browser_download_url;
